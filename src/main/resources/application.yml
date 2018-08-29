@@ -1,7 +1,11 @@
 
-slave:
-  hosts: slave1,slave2
+
 dynamic:
+  hosts: slave1,slave2
+  #设置默认的DB，名字要跟下面的一个pool-name一致，默认是master
+  default-db: master
+  #设置一个默认的拦截值，在使用TargetDataSource时输入的值，默认是slave
+  filter-value: slave
   hikari:
   - master:
     jdbc-url: jdbc:mysql://master-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
