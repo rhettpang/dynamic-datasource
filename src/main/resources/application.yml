@@ -1,4 +1,6 @@
 
+slave:
+  hosts: slave1,slave2
 dynamic:
   hikari:
   - master:
