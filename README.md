@@ -15,18 +15,18 @@ slave:
 dynamic:
   hikari:
     - master:
-      jdbc-url: jdbc:mysql://10.10.20.127:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+      jdbc-url: jdbc:mysql://master-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
       username: root
       password: root
       pool-name: master
     - slave1:
-      jdbc-url: jdbc:mysql://10.10.20.127:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+      jdbc-url: jdbc:mysql://slave1-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
       username: root
       password: root
       pool-name: slave1
       read-only: true
     - slave2:
-      jdbc-url: jdbc:mysql://10.10.20.127:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+      jdbc-url: jdbc:mysql://slave2-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
       username: root
       password: root
       pool-name: slave2
