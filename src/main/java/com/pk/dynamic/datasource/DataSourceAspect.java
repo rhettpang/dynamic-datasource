@@ -18,11 +18,11 @@ public class DataSourceAspect {
 
     private final static Logger log= LoggerFactory.getLogger(DataSourceAspect.class);
 
-    @Value("${dynamic.hosts:slave}")
-    private String dynamicHosts;
+    @Value("${dynamic.datasource:slave}")
+    private String dynamicDatasource;
 
-    @Value("${dynamic.filter-value:slave}")
-    private String dynamicFilterValue;
+    @Value("${dynamic.datasource.flag:slave}")
+    private String dynamicDatasourceFlag;
 
     /**
      * 这里用来拦截有{@link TargetDataSource}注解的方法
@@ -32,9 +32,8 @@ public class DataSourceAspect {
         try {
             String dataSourceName = targetDataSource.value();
             //判断指定的数据源类型，如果是slave，则调用LB方法，随机分配slave数据库
-            if (dataSourceName.equals(dynamicFilterValue)){
-                //TODO 增加对dynamicHosts中配置数据源的验证，如果不存在另做处理
-                dataSourceName = DBLoadBalance.getDBWithRandom(dynamicHosts);
+            if (dataSourceName.equals(dynamicDatasourceFlag)){
+                dataSourceName = DBLoadBalance.getDBWithRandom(dynamicDatasource);
                 //设置要使用的数据源
                 DynamicDataSourceHolder.putDataSource(dataSourceName);
             }

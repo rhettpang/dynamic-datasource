@@ -12,9 +12,9 @@ public class DBLoadBalance {
      * 随机获取db
      * */
     public static String getDBWithRandom(String dbs){
-        String[] slaves = dbs.split(",");
-        int num = new Random().nextInt(slaves.length);
-        return slaves[num];
+        String[] dynamicDBs = dbs.split(",");
+        int num = new Random().nextInt(dynamicDBs.length);
+        return dynamicDBs[num];
     }
 
 }
