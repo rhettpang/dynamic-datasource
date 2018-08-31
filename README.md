@@ -10,29 +10,32 @@
 配置信息如下
 
 ```
-slave:
-  hosts: slave1,slave2
 dynamic:
+  #设置要动态切换的数据库，一定要是下边数据源中的pool-name的值
+  datasource: slave1,slave2
+    #设置用来切换数据库的传入值，作为TargetDataSource的value，默认是slave
+    flag: slave
+  #设置默认的DB，名字要跟下面的一个pool-name一致，默认是master
+  default-db: master
   hikari:
-    - master:
-      jdbc-url: jdbc:mysql://master-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
-      username: root
-      password: root
-      pool-name: master
-    - slave1:
-      jdbc-url: jdbc:mysql://slave1-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
-      username: root
-      password: root
-      pool-name: slave1
-      read-only: true
-    - slave2:
-      jdbc-url: jdbc:mysql://slave2-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
-      username: root
-      password: root
-      pool-name: slave2
-      read-only: true
+  - master:
+    jdbc-url: jdbc:mysql://master-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+    username: root
+    password: root
+    pool-name: master
+  - slave1:
+    jdbc-url: jdbc:mysql://slave1-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+    username: root
+    password: root
+    pool-name: slave1
+    read-only: true
+  - slave2:
+    jdbc-url: jdbc:mysql://slave2-host:3306/authcenter?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+    username: root
+    password: root
+    pool-name: slave2
+    read-only: true
 ```
-slave.hosts指定所有要动态切换的数据源名称，这里要跟相应的pool-name保持一致。
 pool-name指定数据源的名称，在项目中根据pool-name来区分每个数据源。
 其它的配置参数可以自行添加，这里只给出了最简单的信息。
 
