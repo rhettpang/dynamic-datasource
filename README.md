@@ -1,3 +1,9 @@
+说明
+
+ - 之前的主项目拆分成了dynamic-core和dynamic-multi-db两个子module，使用的时候要引入这两块；
+ - gray-released目前是专门用来做灰度发布的，未来准备把这块功能都集成到dynamic-multi-db中。
+
+
 简介
 
 本项目用来动态切换多个数据源，原则上用户只要引入本项目，在相关配置文件中加入相关数据源的配置即可。目前是对slave数据源进行动态切换。
@@ -158,14 +164,20 @@ DBLoadBalance是我写的一个简单的随机指定数据源的工具类，目�
 install参考指令，进入生成的jar所在目录，执行如下指令
 
 ```
-mvn install:install-file -Dfile=dynamic-datasource-0.1.0.jar -DgroupId=com.pk -DartifactId=dynamic-datasource -Dversion=0.1.0 -Dpackaging=jar
+ mvn install:install-file -Dfile=dynamic-core-0.1.0.jar -DgroupId=dynamic-datasource -DartifactId=dynamic-core -Dversion=0.1.0 -Dpackaging=jar
+ mvn install:install-file -Dfile=dynamic-multi-db-0.1.0.jar -DgroupId=dynamic-datasource -DartifactId=dynamic-multi-db -Dversion=0.1.0 -Dpackaging=jar
 ```
 在项目中引入
 
 ```
 		<dependency>
-			<groupId>com.pk</groupId>
-			<artifactId>dynamic-datasource</artifactId>
+			<groupId>dynamic-datasource</groupId>
+			<artifactId>dynamic-multi-db</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>dynamic-datasource</groupId>
+			<artifactId>dynamic-core</artifactId>
 			<version>0.1.0</version>
 		</dependency>
 ```
@@ -174,7 +186,7 @@ mvn install:install-file -Dfile=dynamic-datasource-0.1.0.jar -DgroupId=com.pk -D
 
 ```
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@EnableDynamicDataSource
+@EnableMultiDataSource
 public class StartApplication {
 
 	public static void main(String[] args) {
