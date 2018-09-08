@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.pk</groupId>
+    <groupId>dynamic.datasource</groupId>
     <artifactId>dynamic-datasource</artifactId>
     <packaging>pom</packaging>
     <version>0.1.0</version>
@@ -17,6 +17,8 @@
     </developers>
     <modules>
         <module>gray-released</module>
+        <module>dynamic-multi-db</module>
+        <module>dynamic-core</module>
     </modules>
 
     <properties>
@@ -28,21 +30,6 @@
         <maven.compiler.source>${version.java}</maven.compiler.source>
     </properties>
 
-
-    <dependencies>
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>

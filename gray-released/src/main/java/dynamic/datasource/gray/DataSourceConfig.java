@@ -1,4 +1,4 @@
-package com.pk.dynamic.datasource;
+package dynamic.datasource.gray;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.pk.dynamic.datasource;
+package dynamic.datasource.multidb;
 
 import java.lang.annotation.*;
 

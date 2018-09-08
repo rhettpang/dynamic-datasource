@@ -1,4 +1,4 @@
-package com.pk.dynamic.datasource.gray;
+package dynamic.datasource.core;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ import java.util.Set;
  * @author Created by pangkunkun on 2018/8/28.
  */
 @Configuration
-public class DataSourceConfig {
+public class DataSourceConfig<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 

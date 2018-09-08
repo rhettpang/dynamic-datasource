@@ -1,5 +1,6 @@
-package com.pk.dynamic.datasource;
+package dynamic.datasource.multidb;
 
+import dynamic.datasource.core.DynamicDataSourceHolder;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,7 +19,7 @@ public class DataSourceAspect {
 
     private final static Logger log= LoggerFactory.getLogger(DataSourceAspect.class);
 
-    @Value("${dynamic.datasource:slave}")
+    @Value("${dynamic.datasource.names:slave}")
     private String dynamicDatasource;
 
     @Value("${dynamic.datasource.flag:slave}")
@@ -46,7 +47,7 @@ public class DataSourceAspect {
     /**
      * 执行完切面后，将线程共享中的数据源名称清空
      * */
-    @After("@annotation(TargetDataSource)")
+    @After("@annotation(dynamic.datasource.multidb.TargetDataSource)")
     public void after(JoinPoint joinPoint){
         DynamicDataSourceHolder.removeDataSource();
     }

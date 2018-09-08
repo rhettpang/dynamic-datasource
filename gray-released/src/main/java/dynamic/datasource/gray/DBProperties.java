@@ -1,4 +1,4 @@
-package com.pk.dynamic.datasource;
+package dynamic.datasource.gray;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -11,8 +11,9 @@
 
 ```
 dynamic:
-  #设置要动态切换的数据库，一定要是下边数据源中的pool-name的值
-  datasource: slave1,slave2
+  datasource:
+    #设置要动态切换的数据库，一定要是下边数据源中的pool-name的值
+    names: slave1,slave2
     #设置用来切换数据库的传入值，作为TargetDataSource的value，默认是slave
     flag: slave
   #设置默认的DB，名字要跟下面的一个pool-name一致，默认是master
